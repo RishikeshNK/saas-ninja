@@ -1,19 +1,24 @@
-import Link from 'next/link';
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
-import ModeToggle from './mode-toggle';
-import Container from './container';
+import Link from 'next/link'
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
+import ModeToggle from './mode-toggle'
+import Container from './container'
 
 export default function Navbar() {
   return (
     <Container>
-      <div className='flex items-center justify-between py-4'>
-        <div className='flex flex-row'>
+      <div className="flex items-center justify-between py-4">
+        <div className="flex flex-row">
           <Link href="/" legacyBehavior passHref>
-            <a className='text-3xl font-bold'>SaaS Ninja</a>
+            <a className="text-3xl font-bold">SaaS Ninja</a>
           </Link>
-          <NavigationMenu className='list-none pl-2'>
+          <NavigationMenu className="list-none pl-2">
             <NavigationMenuItem>
-            <Link href="/features" legacyBehavior passHref>
+              <Link href="/features" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                   Features
                 </NavigationMenuLink>
@@ -39,5 +44,5 @@ export default function Navbar() {
         <ModeToggle />
       </div>
     </Container>
-  );
+  )
 }
