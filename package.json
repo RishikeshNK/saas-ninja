@@ -8,6 +8,14 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "lint-staged": {
+    "**/*.(ts|tsx)": "pnpm tsc --noEmit",
+    "**/*.(ts|tsx|js)": [
+      "pnpm eslint .",
+      "pnpm prettier --write ."
+    ],
+    "**/*.(md|json)": "pnpm prettier --write ."
+  },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-navigation-menu": "^1.1.4",
@@ -32,6 +40,7 @@
     "eslint-config-next": "13.5.4",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^15.0.1",
     "postcss": "^8",
     "prettier": "^3.0.3",
     "tailwindcss": "^3",
