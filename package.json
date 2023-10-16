@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "lint-staged": {
-    "**/*.(ts|tsx)": "pnpm tsc --noEmit",
     "**/*.(ts|tsx|js)": [
       "pnpm eslint .",
       "pnpm prettier --write ."
