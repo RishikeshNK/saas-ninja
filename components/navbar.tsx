@@ -9,7 +9,6 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import ModeToggle from './mode-toggle'
-import Container from './container'
 import { Swords } from 'lucide-react'
 import { Button } from './ui/button'
 
@@ -22,37 +21,35 @@ export default function Navbar() {
   ]
 
   return (
-    <Container>
-      <div className="flex items-center justify-between py-4">
-        <div className="flex flex-row items-center space-x-4">
-          <Link href="/" passHref legacyBehavior>
-            <a className="flex items-center space-x-2">
-              <Swords size={28} />
-              <p className="text-2xl font-bold">SaaS Ninja</p>
-            </a>
-          </Link>
-          <NavigationMenu className="list-none pl-2">
-            <NavigationMenuList>
-              {navItems.map((navItem, index) => (
-                <NavigationMenuItem key={index}>
-                  <NavigationMenuLink
-                    className={navigationMenuTriggerStyle()}
-                    href={navItem.href}
-                  >
-                    {navItem.label}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-        <div className="flex flex-row space-x-2">
-          <ModeToggle />
-          <Button asChild variant="secondary">
-            <Link href="/login">Login</Link>
-          </Button>
-        </div>
+    <div className="flex items-center justify-between py-4">
+      <div className="flex flex-row items-center space-x-4">
+        <Link href="/" passHref legacyBehavior>
+          <a className="flex items-center space-x-2">
+            <Swords size={28} />
+            <p className="text-2xl font-bold">SaaS Ninja</p>
+          </a>
+        </Link>
+        <NavigationMenu className="list-none pl-2">
+          <NavigationMenuList>
+            {navItems.map((navItem, index) => (
+              <NavigationMenuItem key={index}>
+                <NavigationMenuLink
+                  className={navigationMenuTriggerStyle()}
+                  href={navItem.href}
+                >
+                  {navItem.label}
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
       </div>
-    </Container>
+      <div className="flex flex-row space-x-2">
+        <ModeToggle />
+        <Button asChild variant="secondary">
+          <Link href="/login">Login</Link>
+        </Button>
+      </div>
+    </div>
   )
 }
