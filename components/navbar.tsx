@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import Link from 'next/link'
@@ -14,10 +16,10 @@ import { Button } from './ui/button'
 
 export default function Navbar() {
   const navItems = [
-    { label: 'Features', href: '/features' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Documentation', href: '/docs' },
+    { label: 'Features', href: '/#features' },
+    { label: 'Pricing', href: '/#pricing' },
+    { label: 'Blog', href: '/#blog' },
+    { label: 'Documentation', href: '/#docs' },
   ]
 
   return (
@@ -47,7 +49,7 @@ export default function Navbar() {
       <div className="flex flex-row space-x-2">
         <ModeToggle />
         <Button asChild variant="secondary">
-          <Link href="/login">Login</Link>
+          <Link href="/sign-in">Sign in</Link>
         </Button>
       </div>
     </div>

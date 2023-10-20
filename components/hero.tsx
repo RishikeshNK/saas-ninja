@@ -24,7 +24,7 @@ const Hero = () => {
             one-of-a-kind software solution.
           </p>
           <div className="flex space-x-2">
-            <Link href="/login">
+            <Link href="/sign-in">
               <Button className="px-5 py-3 group">
                 Get started
                 <Icons.rightArrow />

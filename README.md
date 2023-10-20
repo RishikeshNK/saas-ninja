@@ -2,6 +2,12 @@
 
 Welcome to SaaS Ninja, your ultimate SaaS development template for lazy developers! Say goodbye to tedious setup tasks and hello to speedy SaaS development, putting you on the fast track to crafting your one-of-a-kind software solution.
 
+## Features
+
+- [Next.js](https://nextjs.org): Web development framework
+- [Tailwind CSS](https://tailwindcss.com): CSS framework
+- [shadcn/ui](https://ui.shadcn.com/): Components library
+
 ## Getting Started
 
 First, run the development server:
