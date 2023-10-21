@@ -28,7 +28,7 @@ export default function Page() {
           <Swords size={48} />
           <h1 className="text-2xl font-semibold tracking-tight">Get Started</h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email and password to sign up
+            Enter your email below to create your account{' '}
           </p>
         </div>
         <UserAuthForm buttonText="Sign Up" />

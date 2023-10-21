@@ -30,7 +30,7 @@ export default function Page() {
             Welcome Back
           </h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email and password to sign in
+            Enter your email to sign in to your account{' '}
           </p>
         </div>
         <UserAuthForm buttonText="Sign In" />

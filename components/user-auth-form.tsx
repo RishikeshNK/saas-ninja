@@ -4,7 +4,6 @@ import * as React from 'react'
 
 import * as z from 'zod'
 
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
@@ -18,7 +17,9 @@ import {
 } from '@/components/ui/form'
 import { Icons } from './icons'
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
+import { signIn } from 'next-auth/react'
+
+type UserAuthFormProps = {
   buttonText: string
 }
 
@@ -26,31 +27,22 @@ const formSchema = z.object({
   email: z.string().email({
     message: 'Must be a valid email',
   }),
-  password: z.string().min(4, {
-    message: 'Must be at least 4 characters',
-  }),
 })
 
-export function UserAuthForm({
-  buttonText,
-  className,
-  ...props
-}: UserAuthFormProps) {
+export function UserAuthForm({ buttonText }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
-      password: '',
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
 
-    // Authenticate using Supabase
-    console.log(values)
+    console.log(values.email)
 
     setTimeout(() => {
       setIsLoading(false)
@@ -58,7 +50,7 @@ export function UserAuthForm({
   }
 
   return (
-    <div className={cn('grid gap-6', className)} {...props}>
+    <div className="grid gap-6">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
           <FormField
@@ -70,31 +62,14 @@ export function UserAuthForm({
                 <FormControl>
                   <Input
                     placeholder="name@example.com"
-                    disabled={isLoading}
+                    disabled={true}
                     {...field}
                   />
                 </FormControl>
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormMessage />
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="••••••••"
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <Button disabled={isLoading} className="w-full">
+          <Button disabled={true} className="w-full">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
@@ -112,7 +87,12 @@ export function UserAuthForm({
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button
+        variant="outline"
+        type="button"
+        disabled={isLoading}
+        onClick={() => signIn('github', { callbackUrl: '/dashboard' })}
+      >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
